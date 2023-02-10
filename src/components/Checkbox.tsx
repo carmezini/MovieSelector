@@ -13,8 +13,9 @@ export function Checkbox({ title, ...rest }: Props) {
         borderRadius={100} 
         fontWeight='bold' 
         fontSize={32}
+        marginLeft={2}
         {...rest}>
-            <Text>
+            <Text fontWeight='bold' color='white'>
                 {title}
             </Text>
         </NBCheckbox>
