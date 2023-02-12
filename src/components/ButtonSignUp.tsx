@@ -14,7 +14,7 @@ export function ButtonSignUp({ title, ...rest }: Props) {
             bgColor:'purple.900'
         }} 
         {...rest}>
-            <Text fontWeight='bold' color='white' fontSize={32}>
+            <Text fontWeight='bold' color='white' >
                 {title}
             </Text>
         </NBButton>
