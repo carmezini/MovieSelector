@@ -4,7 +4,7 @@ type Props = IButtonProps & {
     title: string;
 }
 
-export function ButtonLogIn({ title, ...rest }: Props) {
+export function ConfirmationButtonLogIn({ title, ...rest }: Props) {
     return (
         <NBButton
         bgColor='#4D54E5'

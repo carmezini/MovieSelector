@@ -1,6 +1,9 @@
 import { SignUp } from './src/screens/SignUp';
 import { LogIn } from './src/screens/LogIn';
 import { NativeBaseProvider, extendTheme } from 'native-base';
+import { Routes } from './src/routes'
+
+
 
 export default function App() {
   const theme = extendTheme({
@@ -13,9 +16,12 @@ export default function App() {
       },
     },
   });
+
+
+
   return (
-    <NativeBaseProvider theme={theme}>
-      <LogIn/>
-    </NativeBaseProvider>
+      <NativeBaseProvider theme={theme}>
+        <Routes/>
+      </NativeBaseProvider>
   );
 }

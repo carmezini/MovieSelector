@@ -1,12 +1,13 @@
 import { VStack, Heading, Center, Image, HStack, Divider } from 'native-base';
 import { Input } from '../components/Input';
-import { ButtonSignUp } from '../components/ButtonSignUp';
-import { ButtonLogIn } from '../components/ButtonLogIn';
+import { ConfirmationButtonSignUp } from '../components/ConfirmationButtonSignUp';
+import { CallButtonLogIn } from '../components/CallButtonLogIn';
 import { Checkbox } from '../components/Checkbox';
 import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 type FormDataProps = {
     name: string;
@@ -34,6 +35,12 @@ const signUpSchema = yup.object({
     });
 
 export function SignUp() {
+
+    const navigation = useNavigation();
+
+    function callLogInScreen() {;
+        navigation.navigate('LogIn');
+    }
 
     const { control, handleSubmit, formState:{ errors } } = useForm<FormDataProps>({
         resolver: yupResolver(signUpSchema)
@@ -147,13 +154,13 @@ export function SignUp() {
             </HStack>
         </Center>
         <Center>
-            <ButtonSignUp 
+            <ConfirmationButtonSignUp 
             title='Sign Up'
             width={183}
             height={63} 
             fontSize={32}
             marginTop={2}
-            onPress={handleSubmit(handleSignUp)}/>
+            onPress={handleSubmit(handleSignUp)} />
         </Center>
 
         <Divider
@@ -168,12 +175,12 @@ export function SignUp() {
             Already have an account?
         </Heading>
         
-        <ButtonLogIn
-            title='Log In'
-            width={78}
+        <CallButtonLogIn
+            onPress={callLogInScreen}
             mt={2}
-            fontSize={16} >
-        </ButtonLogIn>
+            width={78}
+            fontSize={16}
+            title='Log In' />
         
     </VStack>
   );

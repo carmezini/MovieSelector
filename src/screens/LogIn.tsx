@@ -1,12 +1,13 @@
 import { VStack, Heading, Center, Image, HStack, Divider } from 'native-base';
 import { Input } from '../components/Input';
-import { ButtonSignUp } from '../components/ButtonSignUp';
-import { ButtonLogIn } from '../components/ButtonLogIn';
+import { ConfirmationButtonLogIn } from '../components/ConfirmationButtonLogIn';
+import { CallButtonSignUp } from '../components/CallButtonSignUp';
 import { Checkbox } from '../components/Checkbox';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 type FormDataProps = {
     email: string,
@@ -25,6 +26,11 @@ const LogInSchema = yup.object({
     });
 
 export function LogIn() {
+    const navigation = useNavigation();
+    
+    function callSignUpScreen() {;
+        navigation.navigate('SignUp');
+    }
 
     const { control, handleSubmit, formState:{ errors }  } = useForm<FormDataProps>({
         resolver: yupResolver(LogInSchema)
@@ -33,6 +39,7 @@ export function LogIn() {
     function handleLogIn(data: FormDataProps) {
         console.log(data)
         };
+
 
     return (
         <VStack bgColor='primary.200' flex={1} px={5}>
@@ -106,7 +113,7 @@ export function LogIn() {
                             size={30}
                             color='black' />
                 </HStack>
-                <ButtonLogIn
+                <ConfirmationButtonLogIn
                 mt={5}
                 width={154}
                 fontSize={32}
@@ -125,7 +132,8 @@ export function LogIn() {
                 fontWeight='medium' >
                     Don't have an account yet?
             </Heading>
-            <ButtonSignUp
+            <CallButtonSignUp
+            onPress={callSignUpScreen}
             mt={2}
             width={78}
             fontSize={16}

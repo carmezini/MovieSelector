@@ -4,17 +4,17 @@ type Props = IButtonProps & {
     title: string;
 }
 
-export function ButtonSignUp({ title, ...rest }: Props) {
+export function CallButtonLogIn({ title, ...rest }: Props) {
     return (
         <NBButton
-        bgColor='#4D54E5'
-        borderRadius={100} 
-        fontWeight='bold' 
+        bgColor='primary.100'
+        borderRadius={100}
+        w={79}
         _pressed={{
             bgColor:'purple.900'
         }} 
         {...rest}>
-            <Text fontWeight='bold' color='white' >
+            <Text fontWeight='bold' color='white' fontSize={16}>
                 {title}
             </Text>
         </NBButton>
