@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableLogIn } from '../components/TouchableLogIn';
 
 type FormDataProps = {
     email: string,
@@ -42,7 +43,7 @@ export function LogIn() {
 
 
     return (
-        <VStack bgColor='primary.200' flex={1} px={5}>
+        <VStack bgColor='#1C2340' flex={1} px={5}>
             <Center>
                 <Image
                     mt={10}
@@ -113,11 +114,7 @@ export function LogIn() {
                             size={30}
                             color='black' />
                 </HStack>
-                <ConfirmationButtonLogIn
-                mt={5}
-                width={154}
-                fontSize={32}
-                title='Log in' />
+                <TouchableLogIn />
 
             </Center>
 
